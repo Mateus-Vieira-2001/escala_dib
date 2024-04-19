@@ -83,3 +83,5 @@ group :test do
 end
 
 gem 'rspec', '~> 3.13'
+
+gem 'yard', '~> 0.9.36'
