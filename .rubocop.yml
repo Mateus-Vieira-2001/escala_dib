@@ -1,0 +1,58 @@
+inherit_from:
+
+
+require:
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-performance
+  - rubocop-factory_bot
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.3.0
+  NewCops: enable
+
+# # == Style ==
+# Style/Documentation:
+#   Enabled: false
+
+# # == Metrics ==
+# Metrics/AbcSize:
+#   Enabled: true
+#   Exclude:
+#     - db/**/*.rb
+
+# Metrics/MethodLength:
+#   Enabled: true
+#   Exclude:
+#     - db/**/*.rb
+
+# # == Rails ==
+# Rails/I18nLocaleTexts:
+#   Enabled: false
+
+# Rails/ActiveRecordOverride:
+#   Enabled: false
+
+# RSpec/Rails/InferredSpecType:
+#   Enabled: false
+
+# RSpec/NestedGroups:
+#   Enabled: false
+
+# RSpec/MultipleExpectations:
+#   Enabled: false
+
+# RSpec/ImplicitSubject:
+#   Enabled: false
+
+# RSpec/ContextWording:
+#   Prefixes:
+#     - quando
+#     - com
+#     - sem
+
+# RSpec/VariableName:
+#   Enabled: true
+#   Exclude:
+#     - spec/requests/**/*.rb
