@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_195325) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_203725) do
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.string "handout"
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_195325) do
     t.integer "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "preferred_day"
+    t.integer "preferred_class"
   end
 
   add_foreign_key "schedules", "assistents"
