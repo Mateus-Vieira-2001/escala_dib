@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_203725) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_22_162259) do
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.string "handout"
@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_19_203725) do
     t.datetime "updated_at", null: false
     t.integer "preferred_day"
     t.integer "preferred_class"
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "schedules", "assistents"

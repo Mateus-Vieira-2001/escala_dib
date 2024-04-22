@@ -2,7 +2,6 @@
   <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -32,9 +31,23 @@
   </div>
 
   <div>
-    <%= form.label :profile, style: "display: block" %>
-    <%= form.number_field :profile %>
+    <%= form.label :profile, "Auxiliar" %>
+    <%= form.check_box :profile, {}, 'assistent', nil %>
   </div>
+
+  <div>
+    <%= form.label :profile, "Professor" %>
+    <%= form.check_box :profile, {}, 'teacher', nil %>
+  </div>
+
+  <div>
+    <%= form.label :profile, "Líder" %>
+    <%= form.check_box :profile, {}, 'leader', nil %>
+  </div>
+
+  <% if user.profile && user.profile.include?('assistent') && user.profile.include?('teacher') %>
+    <%= form.hidden_field :profile, value: 'teacher_assistent' %>
+  <% end %>
 
   <div>
     <%= form.submit %>

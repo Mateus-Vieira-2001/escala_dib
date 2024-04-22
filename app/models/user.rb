@@ -29,4 +29,8 @@ class User < ApplicationRecord
     Kids2: 9,
     Babies: 10
   }
+
+  def destroy
+    delete
+  end
 end
