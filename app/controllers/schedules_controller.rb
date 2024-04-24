@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for managing schedules
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[show edit update destroy]
 

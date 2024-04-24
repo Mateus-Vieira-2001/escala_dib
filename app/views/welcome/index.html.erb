@@ -1,0 +1,24 @@
+<h1>Página inicial</h1>
+<h5><p>Entre ou cadastre</p></h5>
+
+<div >
+  <%= button_to "Entrar", : %>
+</div>
+<%div>
+=begin%>
+ <p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New user", new_administrate_user_path %>
+<%
+=end%>

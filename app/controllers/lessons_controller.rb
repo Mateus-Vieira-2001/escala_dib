@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for managing Lessons
 class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[show edit update destroy]
 

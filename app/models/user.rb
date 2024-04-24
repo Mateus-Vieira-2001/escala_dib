@@ -6,18 +6,12 @@ class User < ApplicationRecord
   has_many :user_assistent, class_name: 'schedule', foreign_key: 'assistent_id', dependent: :destroy,
                             inverse_of: :schedule
   has_many :user_leader, class_name: 'schedule', foreign_key: 'leader_id', dependent: :destroy, inverse_of: :schedule
+  has_many :user_profiles, dependent: :destroy
+  has_many :type_profile, through: :type_profile
 
-  enum profile: {
-    leader: 1,
-    teacher: 2,
-    assistent: 3,
-    teacher_assistent: 4,
-    leader_assistent: 5,
-    leader_teacher: 6
-  }
+  before_save :check_name
 
   enum preferred_class: {
-
     Teens: 1,
     Teens1: 2,
     Teens2: 3,
@@ -29,6 +23,15 @@ class User < ApplicationRecord
     Kids2: 9,
     Babies: 10
   }
+  def check_name
+    return nil if name.nil?
+
+    name.each do |_name_user|
+      return name if name_use != name
+
+      error.add(:name, 'O nome ja está cadastrado')
+    end
+  end
 
   def destroy
     delete

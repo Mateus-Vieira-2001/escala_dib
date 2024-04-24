@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_22_162259) do
-  create_table "lessons", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2024_04_23_122321) do
+  create_table "lessons", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.string "handout"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
+  create_table "schedules", charset: "utf8mb3", force: :cascade do |t|
     t.string "teacher_name"
-    t.integer "teacher_id", null: false
+    t.bigint "teacher_id", null: false
     t.string "assistent_name"
-    t.integer "assistent_id", null: false
+    t.bigint "assistent_id", null: false
     t.string "leader_name"
-    t.integer "leader_id", null: false
+    t.bigint "leader_id", null: false
     t.string "lesson_title"
-    t.integer "lesson_id", null: false
+    t.bigint "lesson_id", null: false
     t.string "stopover_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,21 +36,34 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_22_162259) do
     t.index ["teacher_id"], name: "index_schedules_on_teacher_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "type_profiles", charset: "utf8mb3", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_profiles", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.date "birthdate"
     t.string "email"
     t.string "telefone"
-    t.integer "profile"
+    t.string "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "preferred_day"
     t.integer "preferred_class"
+    t.boolean "assistent", default: false, null: false
+    t.boolean "leader", default: false, null: false
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
-  add_foreign_key "schedules", "assistents"
-  add_foreign_key "schedules", "leaders"
   add_foreign_key "schedules", "lessons"
-  add_foreign_key "schedules", "teachers"
+  add_foreign_key "schedules", "users", column: "assistent_id"
+  add_foreign_key "schedules", "users", column: "leader_id"
+  add_foreign_key "schedules", "users", column: "teacher_id"
 end
