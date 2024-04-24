@@ -49,7 +49,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.4'
   gem 'faker', '~> 3.2'
-  gem 'rspec-rails', '~> 5.1'
+  # gem 'rspec-rails'
   gem 'shoulda-callback-matchers'
   gem 'shoulda-matchers', '~> 5.3'
 
@@ -59,6 +59,10 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.21'
   gem 'rubocop-rake', '~> 0.6.0'
   gem 'rubocop-rspec', '~> 2.26'
+
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+  end
 end
 
 group :development do

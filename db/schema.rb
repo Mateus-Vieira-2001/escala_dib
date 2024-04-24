@@ -59,7 +59,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_122321) do
     t.integer "preferred_class"
     t.boolean "assistent", default: false, null: false
     t.boolean "leader", default: false, null: false
-    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "schedules", "lessons"
