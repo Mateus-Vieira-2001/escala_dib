@@ -85,6 +85,6 @@ end
 
 gem 'yard', '~> 0.9.36'
 
-gem 'tty-spinner'
-
+gem 'friendly_id', '~> 5.5.0'
 gem 'mysql2', '~> 0.5.6'
+gem 'tty-spinner'

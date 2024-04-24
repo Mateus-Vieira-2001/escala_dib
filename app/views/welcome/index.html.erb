@@ -2,9 +2,12 @@
 <h5><p>Entre ou cadastre</p></h5>
 
 <div >
-  <%= button_to "Entrar", : %>
+  <%= link_to "Novo Usuário",new_administrate_user_path,class: "user" %>
+  <%= link_to "Entrar",search_path,class: "search_user" %>
 </div>
-<%div>
+<%
+=begin%>
+ <div>
 =begin%>
  <p style="color: green"><%= notice %></p>
 
