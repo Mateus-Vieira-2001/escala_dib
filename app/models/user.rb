@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :user_profiles, dependent: :destroy
   has_many :type_profile, through: :type_profile
 
-  before_save :check_name
+  validate :check_name
 
   enum preferred_class: {
     Teens: 1,
@@ -24,13 +24,11 @@ class User < ApplicationRecord
     Babies: 10
   }
   def check_name
-    return nil if name.nil?
+    return if User.exists? == false
 
-    name.each do |_name_user|
-      return name if name_use != name
-
-      error.add(:name, 'O nome ja está cadastrado')
-    end
+    User.exists?(name:)
+    errors.add(:name, 'O nome ja está cadastrado')
+    false
   end
 
   def destroy
