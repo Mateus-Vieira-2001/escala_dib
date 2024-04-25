@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :type_profile, through: :type_profile
 
   validate :check_name
+  validate :check_profile
 
   enum preferred_class: {
     Teens: 1,
@@ -27,10 +28,18 @@ class User < ApplicationRecord
     Babies: 10
   }
   def check_name
-    return if User.exists? == false
+    # return if User.exists? == false
 
-    User.exists?(name:)
+    return if User.exists?(name:) == false
+
     errors.add(:name, 'O nome ja está cadastrado')
+    false
+  end
+
+  def check_profile
+    return if TypeProfile.find_by(description: profile)
+
+    errors.add(:profile, 'O tipo de usuario nao é permitido')
     false
   end
 

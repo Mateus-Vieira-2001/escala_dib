@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Preferred days</h1>
+
+<div id="preferred_days">
+  <% @preferred_days.each do |preferred_day| %>
+    <%= render preferred_day %>
+    <p>
+      <%= link_to "Show this preferred day", preferred_day %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New preferred day", new_preferred_day_path %>

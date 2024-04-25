@@ -68,8 +68,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_192136) do
     t.datetime "updated_at", null: false
     t.integer "preferred_day"
     t.integer "preferred_class"
-    t.boolean "assistent", default: false, null: false
-    t.boolean "leader", default: false, null: false
     t.string "slug"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end

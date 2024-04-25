@@ -11,12 +11,12 @@
   <% end %>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :Nome, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
-    <%= form.label :birthdate, style: "display: block" %>
+    <%= form.label :'Data de Nascimento', style: "display: block" %>
     <%= form.date_field :birthdate %>
   </div>
 
@@ -30,10 +30,30 @@
     <%= form.text_field :telefone %>
   </div>
 
-  <div>
-    <%= form.label "Professor" %>
-
+  <%
+=begin%>
+ <div>
+    <%= form.label :profile, "Professor" %>
+    <%= form.check_box :profile, {multiple: true}, 'teacher', nil %>
   </div>
+
+  <div>
+    <%= form.label :profile, "Assistente" %>
+    <%= form.check_box :profile, {multiple: true}, 'assistent', nil %>
+  </div>
+
+  <div>
+    <%= form.label :profile, "Líder" %>
+    <%= form.check_box :profile, {multiple: true}, 'leader', nil %>
+  </div>
+<%
+=end%>
+   <div>
+     <%= form.label :'Tipo de usuário', style: "display: block" %>
+    <%= form.text_field :profile %>
+  </div>
+
+
   <div>
     <%= form.submit %>
   </div>

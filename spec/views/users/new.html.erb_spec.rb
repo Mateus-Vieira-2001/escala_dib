@@ -15,7 +15,7 @@ RSpec.describe 'users/new' do
   it 'renders new user form' do
     render
 
-    assert_select 'form[action=?][method=?]', users_path, 'post' do
+    assert_select 'form[action=?][method=?]', administrate_users_path, 'post' do
       assert_select 'input[name=?]', 'user[name]'
 
       assert_select 'input[name=?]', 'user[email]'
