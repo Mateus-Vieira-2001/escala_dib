@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_24_192136) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_25_123357) do
   create_table "friendly_id_slugs", charset: "utf8mb3", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -25,6 +25,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_192136) do
   create_table "lessons", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.string "handout"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "preferred_days", charset: "utf8mb3", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +55,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_24_192136) do
 
   create_table "type_profiles", charset: "utf8mb3", force: :cascade do |t|
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_preffered_days", charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
