@@ -11,28 +11,25 @@ class User < ApplicationRecord
   has_many :user_leader, class_name: 'schedule', foreign_key: 'leader_id', dependent: :destroy, inverse_of: :schedule
   has_many :user_profiles, dependent: :destroy
   has_many :type_profile, through: :type_profile
+  has_many :preferred_days, through: :user_preferred_days
 
-  validate :check_name
-  validate :check_profile
+  validate :check_name, optional: false
+  validate :check_profile, optional: false
+  validate :check_profile, optional: false
 
-  enum preferred_class: {
-    Teens: 1,
-    Teens1: 2,
-    Teens2: 3,
-    Pre: 4,
-    Pre1: 5,
-    Pre2: 6,
-    Kids: 7,
-    Kids1: 8,
-    Kids2: 9,
-    Babies: 10
-  }
   def check_name
     # return if User.exists? == false
 
     return if User.exists?(name:) == false
 
     errors.add(:name, 'O nome ja está cadastrado')
+    false
+  end
+
+  def check_profile
+    return if TypeProfile.find_by(description: profile)
+
+    errors.add(:profile, 'O tipo de usuario nao é permitido')
     false
   end
 

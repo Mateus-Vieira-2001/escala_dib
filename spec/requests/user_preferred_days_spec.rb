@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'UserPrefferedDays' do
+RSpec.describe 'UserPreferredDays' do
   describe 'GET /index' do
     pending "add some examples (or delete) #{__FILE__}"
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :user_preffered_days
+  resources :user_preferred_days
   resources :preferred_days
   get 'welcome/index'
   resources :user_profiles

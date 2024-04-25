@@ -3,15 +3,15 @@
 require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
-# the UserPrefferedDaysHelper. For example:
+# the UserPreferredDaysHelper. For example:
 #
-# describe UserPrefferedDaysHelper do
+# describe UserPreferredDaysHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       expect(helper.concat_strings("this","that")).to eq("this that")
 #     end
 #   end
 # end
-RSpec.describe UserPrefferedDaysHelper do
+RSpec.describe UserPreferredDaysHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
