@@ -13,13 +13,12 @@ class User < ApplicationRecord
   has_many :type_profile, through: :type_profile
   has_many :preferred_days, through: :user_preferred_days
 
-  validate :check_name, optional: false
-  validate :check_profile, optional: false
-  validate :check_profile, optional: false
+  validate :check_name
+  validate :check_profile
+  validate :check_preferrence_day
 
   def check_name
     # return if User.exists? == false
-
     return if User.exists?(name:) == false
 
     errors.add(:name, 'O nome ja está cadastrado')
@@ -33,10 +32,18 @@ class User < ApplicationRecord
     false
   end
 
-  def check_profile
-    return if TypeProfile.find_by(description: profile)
+  def check_preferrence_day
+    return if PreferredDay.find_by(description: preferred_day)
 
-    errors.add(:profile, 'O tipo de usuario nao é permitido')
+    errors.add(:profile, 'O dia não é válido')
+    false
+  end
+
+  def check_preferrence_class
+    byebug
+    return if PreferredClass.find_by(description: preferred_class)
+
+    errors.add(:profile, 'A classe escolhida não é válida')
     false
   end
 

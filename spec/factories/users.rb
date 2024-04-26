@@ -9,5 +9,10 @@ FactoryBot.define do
     profile do
       ['Professor', 'Auxiliar', 'Líder', 'Líder e Auxiliar', 'Líder e Professor', 'Assistente do Líder'].sample
     end
+
+    preferred_day do
+      ['Domingo de manhã', 'Domingo de noite', 'Domingo', 'Segunda Feira', 'Terça Feira', 'Quarta Feira',
+       'Quinta Feira'].sample
+    end
   end
 end
