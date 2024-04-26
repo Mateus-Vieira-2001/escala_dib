@@ -10,12 +10,15 @@ class User < ApplicationRecord
                             inverse_of: :schedule
   has_many :user_leader, class_name: 'schedule', foreign_key: 'leader_id', dependent: :destroy, inverse_of: :schedule
   has_many :user_profiles, dependent: :destroy
+
   has_many :type_profile, through: :type_profile
   has_many :preferred_days, through: :user_preferred_days
+  has_many :preferred_classes, through: :user_preferred_classes
 
   validate :check_name
   validate :check_profile
   validate :check_preferrence_day
+  validate :check_preferrence_class
 
   def check_name
     # return if User.exists? == false
@@ -43,7 +46,7 @@ class User < ApplicationRecord
     byebug
     return if PreferredClass.find_by(description: preferred_class)
 
-    errors.add(:profile, 'A classe escolhida não é válida')
+    errors.add(:profile, 'A turma escolhida não é válida')
     false
   end
 

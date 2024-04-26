@@ -14,5 +14,9 @@ FactoryBot.define do
       ['Domingo de manhã', 'Domingo de noite', 'Domingo', 'Segunda Feira', 'Terça Feira', 'Quarta Feira',
        'Quinta Feira'].sample
     end
+
+    preferred_class do
+      %w[Kids1 Kids2 Kids Pre1 Pre2 Pre Babies Teens1 Teens2 Teens2 Teens].sample
+    end
   end
 end

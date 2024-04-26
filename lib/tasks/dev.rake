@@ -26,19 +26,19 @@ namespace :dev do
     end
   end
 
-  # desc 'Add PreferredClass to database'
-  # task add_preferred_class: :environment do
-  #   if PreferredDay.all == []
-  #     PreferredDay.create(description: 'Kids1')
-  #     PreferredDay.create(description: 'Kids2')
-  #     PreferredDay.create(description: 'Kids')
-  #     PreferredDay.create(description: 'Pre1')
-  #     PreferredDay.create(description: 'Pre2')
-  #     PreferredDay.create(description: 'Pre')
-  #     PreferredDay.create(description: 'Babies')
-  #     PreferredDay.create(description: 'Teens1')
-  #     PreferredDay.create(description: 'Teens2')
-  #     PreferredDay.create(description: 'Teens')
-  #   end
-  # end
+  desc 'Add PreferredClass to database'
+  task add_preferred_class: :environment do
+    if PreferredClass.all == []
+      PreferredClass.create(description: 'Kids1')
+      PreferredClass.create(description: 'Kids2')
+      PreferredClass.create(description: 'Kids')
+      PreferredClass.create(description: 'Pre1')
+      PreferredClass.create(description: 'Pre2')
+      PreferredClass.create(description: 'Pre')
+      PreferredClass.create(description: 'Babies')
+      PreferredClass.create(description: 'Teens1')
+      PreferredClass.create(description: 'Teens2')
+      PreferredClass.create(description: 'Teens')
+    end
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_26_114535) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_26_120303) do
   create_table "friendly_id_slugs", charset: "utf8mb3", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -25,6 +25,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_26_114535) do
   create_table "lessons", charset: "utf8mb3", force: :cascade do |t|
     t.string "title"
     t.string "handout"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "preferred_classes", charset: "utf8mb3", force: :cascade do |t|
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +65,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_26_114535) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_preferred_classes", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_preferred_days", charset: "utf8mb3", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,7 +89,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_26_114535) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "preferred_day"
-    t.integer "preferred_class"
+    t.string "preferred_class"
     t.string "slug"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
