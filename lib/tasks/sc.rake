@@ -31,50 +31,30 @@ namespace :sc do
       teacher_babies = babies_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
       assistent_babies = babies_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
       Schedule.create(
-        teacher_name: teacher_babies.name,
+        teacher: teacher_babies.name,
         teacher_id: teacher_babies.id,
-        assistent_name: assistent_babies.name,
+        assistent: assistent_babies.name,
         assistent_id: assistent_babies.id,
-        leader_name: leader_morning.name,
+        leader: leader_morning.name,
         leader_id: leader_morning.id,
         assistent_leader_name: assistent_leader_morning.name,
         assistent_leader_id: assistent_leader_morning.id,
-        lesson_title: Lesson.last.title,
+        lesson: Lesson.last.title,
         lesson_id: Lesson.last.id,
         stopover_day: date
       )
 
-      teacher_kids1 = kids1_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-      assistent_kids1 = kids1_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-      Schedule.create(teacher_name: teacher_kids1.name, teacher_id: teacher_kids1.id,
-                      assistent_name: assistent_kids1.name, assistent_id: assistent_kids1.id,
-                      leader_name: leader_morning.name, leader_id: leader_morning.id,
-                      assistent_leader: assistent_leader_morning.name, lesson_title: Lesson.last.title,
-                      lesson_id: Lesson.last.id, stopover_day: date)
+      # teacher_kids1 = kids1_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
+      # assistent_kids1 = kids1_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
 
-      teacher_kids2 = kids2_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-      assistent_kids2 = kids2_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
+      # teacher_kids2 = kids2_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
+      # assistent_kids2 = kids2_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
 
-      Schedule.create(teacher_name: teacher_kids2.name, teacher_id: teacher_kids2.id,
-                      assistent_name: assistent_kids2.name, assistent_id: assistent_kids2.id, leader_name: leader_morning.name, leader_id: leader_morning.id, assistent_leader: assistent_leader_morning.name, lesson_title: Lesson.last.title, lesson_id: Lesson.last.id, stopover_day: date)
+      # teacher_pre1 = pre1_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
+      # assistent_pre1 = pre1_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
 
-      teacher_pre1 = pre1_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-      assistent_pre1 = pre1_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-
-      Schedule.create(teacher_name: teacher_pre1.name, teacher_id: teacher_pre1.id,
-                      assistent_name: assistent_pre1.name, assistent_id: assistent_pre1.id,
-                      leader_name: leader_morning.name, leader_id: leader_morning.id,
-                      assistent_leader: assistent_leader_morning.name, lesson_title: Lesson.last.title,
-                      lesson_id: Lesson.last.id, stopover_day: date)
-
-      teacher_pre2 = pre2_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-      assistent_pre2 = pre2_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-      byebug
-      Schedule.create(teacher_name: teacher_pre2.name, teacher_id: teacher_pre2.id,
-                      assistent_name: assistent_pre2.name, assistent_id: assistent_pre2.id,
-                      leader_name: leader_morning.name, leader_id: leader_morning.id,
-                      assistent_leader: assistent_leader_morning.name, lesson_title: Lesson.last.title,
-                      lesson_id: Lesson.last.id, stopover_day: date)
+      # teacher_pre2 = pre2_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
+      # assistent_pre2 = pre2_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
     end
   end
 end

@@ -48,4 +48,11 @@ namespace :dev do
       FactoryBot.create(:user)
     end
   end
+
+  desc 'Create Lessons in database'
+  task create_lessons: :environment do
+    52.times do
+      FactoryBot.create(:lesson)
+    end
+  end
 end

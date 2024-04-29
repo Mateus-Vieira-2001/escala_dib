@@ -6,13 +6,13 @@
 class CreateSchedules < ActiveRecord::Migration[7.1]
   def change
     create_table :schedules do |t|
-      t.string :teacher_name
+      t.string :teacher
       t.references :teacher, null: false, foreign_key: { to_table: :users }
-      t.string :assistent_name
+      t.string :assistent
       t.references :assistent, null: false, foreign_key: { to_table: :users }
-      t.string :leader_name
+      t.string :leader
       t.references :leader, null: false, foreign_key: { to_table: :users }
-      t.string :lesson_title
+      t.string :lesson
       t.references :lesson, null: false, foreign_key: { to_table: :lessons }
       t.string :stopover_day
 

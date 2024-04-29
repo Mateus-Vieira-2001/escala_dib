@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :lesson do
-    title { 'MyString' }
+    title { Faker::Book.title }
     handout { 'MyString' }
   end
 end

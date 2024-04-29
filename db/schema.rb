@@ -42,13 +42,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_29_165803) do
   end
 
   create_table "schedules", charset: "utf8mb3", force: :cascade do |t|
-    t.string "teacher_name"
+    t.string "teacher"
     t.bigint "teacher_id", null: false
-    t.string "assistent_name"
+    t.string "assistent"
     t.bigint "assistent_id", null: false
-    t.string "leader_name"
+    t.string "leader"
     t.bigint "leader_id", null: false
-    t.string "lesson_title"
+    t.string "lesson"
     t.bigint "lesson_id", null: false
     t.string "stopover_day"
     t.datetime "created_at", null: false
