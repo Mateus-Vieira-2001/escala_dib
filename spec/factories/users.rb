@@ -7,7 +7,7 @@ FactoryBot.define do
     email { "#{Faker::Lorem.word}@gmail.com" }
     telefone { Faker::PhoneNumber.phone_number_with_country_code }
     profile do
-      ['Professor', 'Auxiliar', 'Líder', 'Líder e Auxiliar', 'Líder e Professor', 'Assistente do Líder'].sample
+      ['Professor', 'Auxiliar', 'Líder', 'Assistente do Líder', 'Professor e Auxiliar'].sample
     end
 
     preferred_day do

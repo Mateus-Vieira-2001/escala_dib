@@ -5,17 +5,16 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :user_teacher, class_name: 'schedule', foreign_key: 'teacher_id', dependent: :destroy, inverse_of: :schedule
-  has_many :user_assistent, class_name: 'schedule', foreign_key: 'assistent_id', dependent: :destroy,
-                            inverse_of: :schedule
-  has_many :user_leader, class_name: 'schedule', foreign_key: 'leader_id', dependent: :destroy, inverse_of: :schedule
+  has_many :teacher_name, class_name: 'Schedule', foreign_key: 'teacher_id', dependent: :destroy
+  has_many :assistent_name, class_name: 'Schedule', foreign_key: 'assistent_id', dependent: :destroy
+  has_many :leader_name, class_name: 'Schedule', foreign_key: 'leader_id', dependent: :destroy
   has_many :user_profiles, dependent: :destroy
 
   has_many :type_profile, through: :type_profile
   has_many :preferred_days, through: :user_preferred_days
   has_many :preferred_classes, through: :user_preferred_classes
 
-  validate :check_name
+  validates :name, uniqueness: { message: 'O nome já esta cadastrado' }
   validate :check_profile
   validate :check_preferrence_day
   validate :check_preferrence_class
@@ -43,7 +42,6 @@ class User < ApplicationRecord
   end
 
   def check_preferrence_class
-    byebug
     return if PreferredClass.find_by(description: preferred_class)
 
     errors.add(:profile, 'A turma escolhida não é válida')

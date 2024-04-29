@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_26_120303) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_29_165803) do
   create_table "friendly_id_slugs", charset: "utf8mb3", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -53,7 +53,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_26_120303) do
     t.string "stopover_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "assistent_leader_name"
+    t.bigint "assistent_leader_id", null: false
     t.index ["assistent_id"], name: "index_schedules_on_assistent_id"
+    t.index ["assistent_leader_id"], name: "index_schedules_on_assistent_leader_id"
     t.index ["leader_id"], name: "index_schedules_on_leader_id"
     t.index ["lesson_id"], name: "index_schedules_on_lesson_id"
     t.index ["teacher_id"], name: "index_schedules_on_teacher_id"
@@ -96,6 +99,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_26_120303) do
 
   add_foreign_key "schedules", "lessons"
   add_foreign_key "schedules", "users", column: "assistent_id"
+  add_foreign_key "schedules", "users", column: "assistent_leader_id"
   add_foreign_key "schedules", "users", column: "leader_id"
   add_foreign_key "schedules", "users", column: "teacher_id"
 end

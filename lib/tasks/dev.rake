@@ -41,4 +41,11 @@ namespace :dev do
       PreferredClass.create(description: 'Teens')
     end
   end
+
+  desc 'Create Users in database'
+  task create_users: :environment do
+    2500.times do
+      FactoryBot.create(:user)
+    end
+  end
 end
