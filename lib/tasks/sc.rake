@@ -3,161 +3,110 @@
 namespace :sc do
   desc 'Create schedule'
   task create_schedule: :environment do
+    # Schedule.delete_all
+    create_schedule_for_month
+  end
+
+  def create_schedule_for_month
     current_day = Time.current.day
     next_month = Time.zone.today.next_month
     total_days_in_next_month = Time.days_in_month(next_month.month)
-    days_in_next_month = Date.new(next_month.year, next_month.month, 1)
 
     (1..total_days_in_next_month).each do |day|
-      # date = Date.new(next_month.year, next_month.month, day)
-      date = Date.new(next_month.year, next_month.month, day) + 5
-      if date.sunday?
-
-        # Horarios de domingo
-        morning_users = User.where(preferred_day: ['Domingo', 'Domingo de manhã'])
-        evening_users = User.where(preferred_day: ['Domingo', 'Domingo de noite'])
-        # Salas manha
-        babies_morning = morning_users.where(preferred_class: 'Babies')
-        kids1_morning = morning_users.where(preferred_class: %w[Kids1 Kids])
-        kids2_morning = morning_users.where(preferred_class: %w[Kids2 Kids])
-        pre1_morning = morning_users.where(preferred_class: %w[Pre Pre1])
-        pre2_morning = morning_users.where(preferred_class: %w[Pre Pre2])
-
-        # Salas noite
-        babies_evening = evening_users.where(preferred_class: 'Babies')
-        kids1_evening = evening_users.where(preferred_class: %w[Kids1 Kids])
-        kids2_evening = evening_users.where(preferred_class: %w[Kids2 Kids])
-        pre1_evening = evening_users.where(preferred_class: %w[Pre Pre1])
-        pre2_evening = evening_users.where(preferred_class: %w[Pre Pre2])
-
-        # Lider e assistente do lider manha
-        leader_morning = morning_users.where(profile: 'Líder').order('RAND()').first
-        assistent_leader_morning = morning_users.where(profile: 'Assistente do Líder').order('RAND()').first
-
-        # Lider e assistente do lider noite
-        leader_evening = evening_users.where(profile: 'Líder').order('RAND()').first
-        assistent_leader_evening = evening_users.where(profile: 'Assistente do Líder').order('RAND()').first
-
-        # Babies
-        teacher_babies = babies_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-        assistent_babies = babies_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-        Schedule.create(
-          teacher: teacher_babies.name,
-          teacher_id: teacher_babies.id,
-          assistent: assistent_babies.name,
-          assistent_id: assistent_babies.id,
-          leader: leader_morning.name,
-          leader_id: leader_morning.id,
-          assistent_leader_name: assistent_leader_morning.name,
-          assistent_leader_id: assistent_leader_morning.id,
-          lesson: Lesson.last.title,
-          lesson_id: Lesson.last.id,
-          stopover_day: date
-        )
-      else
-
-        # Horarios de domingo
-        morning_users = User.where(preferred_day: ['Domingo', 'Domingo de manhã'])
-        evening_users = User.where(preferred_day: ['Domingo', 'Domingo de noite'])
-        # Salas manha
-        babies_morning = morning_users.where(preferred_class: 'Babies')
-        kids1_morning = morning_users.where(preferred_class: %w[Kids1 Kids])
-        kids2_morning = morning_users.where(preferred_class: %w[Kids2 Kids])
-        pre1_morning = morning_users.where(preferred_class: %w[Pre Pre1])
-        pre2_morning = morning_users.where(preferred_class: %w[Pre Pre2])
-
-        leader_morning = morning_users.where(profile: 'Líder').order('RAND()').first
-        assistent_leader_morning = morning_users.where(profile: 'Assistente do Líder').order('RAND()').first
-
-        # Horario da manhã
-
-        # Babies
-        teacher_babies = babies_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-        assistent_babies = babies_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-        Schedule.create(
-          teacher: teacher_babies.name,
-          teacher_id: teacher_babies.id,
-          assistent: assistent_babies.name,
-          assistent_id: assistent_babies.id,
-          leader: leader_morning.name,
-          leader_id: leader_morning.id,
-          assistent_leader_name: assistent_leader_morning.name,
-          assistent_leader_id: assistent_leader_morning.id,
-          lesson: Lesson.last.title,
-          lesson_id: Lesson.last.id,
-          stopover_day: date
-        )
-
-        teacher_kids1_morning = kids1_morning.where(profile: ['Professor',
-                                                              'Professor e Auxiliar']).order('RAND()').first
-        assistent_kids1_morning = kids1_morning.where(profile: ['Auxiliar',
-                                                                'Professor e Auxiliar']).order('RAND()').first
-        Schedule.create(
-          teacher: teacher_kids1_morning.name,
-          teacher_id: teacher_kids1_morning.id,
-          assistent: assistent_kids1_morning.name,
-          assistent_id: assistent_kids1_morning.id,
-          leader: leader_morning.name,
-          leader_id: leader_morning.id,
-          assistent_leader_name: assistent_leader_morning.name,
-          assistent_leader_id: assistent_leader_morning.id,
-          lesson: Lesson.last.title,
-          lesson_id: Lesson.last.id,
-          stopover_day: date
-        )
-        teacher_kids2_morning = kids2_morning.where(profile: ['Professor',
-                                                              'Professor e Auxiliar']).order('RAND()').first
-        assistent_kids2_morning = kids2_morning.where(profile: ['Auxiliar',
-                                                                'Professor e Auxiliar']).order('RAND()').first
-        Schedule.create(
-          teacher: teacher_kids2_morning.name,
-          teacher_id: teacher_kids2_morning.id,
-          assistent: assistent_kids2_morning.name,
-          assistent_id: assistent_kids2_morning.id,
-          leader: leader_morning.name,
-          leader_id: leader_morning.id,
-          assistent_leader_name: assistent_leader_morning.name,
-          assistent_leader_id: assistent_leader_morning.id,
-          lesson: Lesson.last.title,
-          lesson_id: Lesson.last.id,
-          stopover_day: date
-        )
-
-        teacher_pre1_morning = pre1_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-        assistent_pre1_morning = pre1_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-
-        Schedule.create(
-          teacher: teacher_pre1_morning.name,
-          teacher_id: teacher_pre1_morning.id,
-          assistent: assistent_pre1_morning.name,
-          assistent_id: assistent_pre1_morning.id,
-          leader: leader_morning.name,
-          leader_id: leader_morning.id,
-          assistent_leader_name: assistent_leader_morning.name,
-          assistent_leader_id: assistent_leader_morning.id,
-          lesson: Lesson.last.title,
-          lesson_id: Lesson.last.id,
-          stopover_day: date
-        )
-
-        teacher_pre2_morning = pre2_morning.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
-        assistent_pre2_morning = pre2_morning.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
-
-        Schedule.create(
-          teacher: teacher_pre2_morning.name,
-          teacher_id: teacher_pre2_morning.id,
-          assistent: assistent_pre2_morning.name,
-          assistent_id: assistent_pre2_morning.id,
-          leader: leader_morning.name,
-          leader_id: leader_morning.id,
-          assistent_leader_name: assistent_leader_morning.name,
-          assistent_leader_id: assistent_leader_morning.id,
-          lesson: Lesson.last.title,
-          lesson_id: Lesson.last.id,
-          stopover_day: date
-        )
-
-      end
+      date = Date.new(next_month.year, next_month.month, day)
+      create_schedule_for_day(date)
     end
+  end
+
+  def create_schedule_for_day(date)
+    if date.sunday?
+      create_sunday_schedule(date)
+    elsif date.on_weekday? && !date.friday?
+      create_week_schedule(date)
+    end
+  end
+
+  def create_sunday_schedule(date)
+    first_sunday  = date if date.sunday? && first_sunday.nil?
+    morning_users = User.where(preferred_day: ['Domingo', 'Domingo de manhã'])
+    evening_users = User.where(preferred_day: ['Domingo', 'Domingo de noite'])
+
+    if date == first_sunday
+      create_schedule_for_time_slot_sunday(date, morning_users, 'Primeiro horário')
+      create_schedule_for_time_slot_sunday(date, morning_users, 'Segundo horário')
+    else
+      create_schedule_for_time_slot_sunday(date, morning_users)
+    end
+    create_schedule_for_time_slot_sunday(date, evening_users)
+  end
+
+  def create_week_schedule(date)
+    user = if date.monday?
+             User.where(preferred_day: 'Segunda feira')
+           elsif date.tuesday?
+             User.where(preferred_day: 'Terça Feira')
+           elsif date.wednesday?
+             User.where(preferred_day: 'Quarta Feira')
+           elsif date.thursday?
+             User.where(preferred_day: 'Quinta Feira')
+           end
+    create_schedule_for_time_slot_week(date, user)
+  end
+
+  def create_schedule_for_time_slot_sunday(date, users, observation = nil)
+    create_schedule_for_time_slot(date, users, observation)
+  end
+
+  def create_schedule_for_time_slot_week(date, users, observation = nil)
+    create_schedule_for_time_slot(date, users, observation)
+  end
+
+  def create_schedule_for_time_slot(date, users, observation)
+    babies = users.where(preferred_class: 'Babies')
+    kids1 = users.where(preferred_class: %w[Kids1 Kids])
+    kids2 = users.where(preferred_class: %w[Kids2 Kids])
+    pre1 = users.where(preferred_class: %w[Pre Pre1])
+    pre2 = users.where(preferred_class: %w[Pre Pre2])
+
+    leader = users.where(profile: 'Líder').order('RAND()').first
+    assistent_leader = users.where(profile: 'Assistente do Líder').order('RAND()').first
+    create_schedule_for_category(babies, leader, assistent_leader, date, observation)
+    create_schedule_for_category(kids1, leader, assistent_leader, date, observation)
+    create_schedule_for_category(kids2, leader, assistent_leader, date, observation)
+    create_schedule_for_category(pre1, leader, assistent_leader, date, observation)
+    create_schedule_for_category(pre2, leader, assistent_leader, date, observation)
+  end
+
+  def create_schedule_for_category(users, leader, assistent_leader, date, observation = nil)
+    teacher = users.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
+    assistent = users.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
+    loop do
+      break if Schedule.where(teacher: teacher.name).count <= 2 && Schedule.where(teacher: teacher.name,
+                                                                                  stopover_day: date).count < 2
+
+      teacher = users.where(profile: ['Professor', 'Professor e Auxiliar']).order('RAND()').first
+    end
+
+    loop do
+      break if Schedule.where(assistent: assistent.name).count <= 2 && Schedule.where(assistent: assistent.name,
+                                                                                      stopover_day: date).count < 2
+
+      assistent = users.where(profile: ['Auxiliar', 'Professor e Auxiliar']).order('RAND()').first
+    end
+
+    Schedule.create(
+      teacher: teacher.name,
+      teacher_id: teacher.id,
+      assistent: assistent.name,
+      assistent_id: assistent.id,
+      leader: leader.name,
+      leader_id: leader.id,
+      assistent_leader_name: assistent_leader.name,
+      assistent_leader_id: assistent_leader.id,
+      lesson: Lesson.last.title,
+      lesson_id: Lesson.last.id,
+      stopover_day: date,
+      observation:
+    )
   end
 end
