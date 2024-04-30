@@ -2,14 +2,12 @@
 
 FactoryBot.define do
   factory :schedule do
-    teacher_name { 'MyString' }
-    teacher { nil }
-    assistent_name { 'MyString' }
-    assistent { nil }
-    leader_name { 'MyString' }
-    leader { nil }
-    lesson_title { 'MyString' }
-    lesson { nil }
-    stopover_day { 'MyString' }
+    user
+    assistent_name { :user }
+    teacher_name { :user }
+    assistent_leader_name { :user }
+    leader_name { :user }
+
+    lesson
   end
 end
