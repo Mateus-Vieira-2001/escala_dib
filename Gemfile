@@ -10,9 +10,6 @@ gem 'rails', '~> 7.1.3', '>= 7.1.3.2'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
@@ -52,7 +49,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.4'
   gem 'faker', '~> 3.2'
-  gem 'rspec-rails', '~> 5.1'
+  # gem 'rspec-rails'
   gem 'shoulda-callback-matchers'
   gem 'shoulda-matchers', '~> 5.3'
 
@@ -62,6 +59,10 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.21'
   gem 'rubocop-rake', '~> 0.6.0'
   gem 'rubocop-rspec', '~> 2.26'
+
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+  end
 end
 
 group :development do
@@ -82,6 +83,8 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem 'rspec', '~> 3.13'
-
 gem 'yard', '~> 0.9.36'
+
+gem 'friendly_id', '~> 5.5.0'
+gem 'mysql2', '~> 0.5.6'
+gem 'tty-spinner'

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Preferred classes</h1>
+
+<div id="preferred_classes">
+  <% @preferred_classes.each do |preferred_class| %>
+    <%= render preferred_class %>
+    <p>
+      <%= link_to "Show this preferred class", preferred_class %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New preferred class", new_preferred_class_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @type_profile %>
+
+<div>
+  <%= link_to "Edit this type profile", edit_type_profile_path(@type_profile) %> |
+  <%= link_to "Back to type profiles", type_profiles_path %>
+
+  <%= button_to "Destroy this type profile", @type_profile, method: :delete %>
+</div>

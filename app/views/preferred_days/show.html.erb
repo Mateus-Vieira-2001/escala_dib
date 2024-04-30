@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @preferred_day %>
+
+<div>
+  <%= link_to "Edit this preferred day", edit_preferred_day_path(@preferred_day) %> |
+  <%= link_to "Back to preferred days", preferred_days_path %>
+
+  <%= button_to "Destroy this preferred day", @preferred_day, method: :delete %>
+</div>

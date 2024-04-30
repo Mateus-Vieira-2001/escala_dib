@@ -1,0 +1,60 @@
+<%= form_with(model:[:administrate, user]) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Nome, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :'Data de Nascimento', style: "display: block" %>
+    <%= form.date_field :birthdate %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :telefone, style: "display: block" %>
+    <%= form.text_field :telefone %>
+  </div>
+
+  <%
+=begin%>
+ <div>
+    <%= form.label :profile, "Professor" %>
+    <%= form.check_box :profile, {multiple: true}, 'teacher', nil %>
+  </div>
+
+  <div>
+    <%= form.label :profile, "Assistente" %>
+    <%= form.check_box :profile, {multiple: true}, 'assistent', nil %>
+  </div>
+
+  <div>
+    <%= form.label :profile, "Líder" %>
+    <%= form.check_box :profile, {multiple: true}, 'leader', nil %>
+  </div>
+<%
+=end%>
+   <div>
+     <%= form.label :'Tipo de usuário', style: "display: block" %>
+    <%= form.text_field :profile %>
+  </div>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @preferred_class %>
+
+<div>
+  <%= link_to "Edit this preferred class", edit_preferred_class_path(@preferred_class) %> |
+  <%= link_to "Back to preferred classes", preferred_classes_path %>
+
+  <%= button_to "Destroy this preferred class", @preferred_class, method: :delete %>
+</div>

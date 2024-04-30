@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
 RSpec.describe Schedule do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associações' do
+    it { is_expected.to belong_to(:leader_name).class_name('Schedule') }
+  end
 end
