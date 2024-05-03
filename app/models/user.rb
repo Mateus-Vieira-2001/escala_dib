@@ -37,6 +37,7 @@ class User < ApplicationRecord
   def check_preferrence_day
     return if PreferredDay.find_by(description: preferred_day)
 
+    byebug
     errors.add(:profile, 'O dia não é válido')
     false
   end
@@ -46,9 +47,5 @@ class User < ApplicationRecord
 
     errors.add(:profile, 'A turma escolhida não é válida')
     false
-  end
-
-  def destroy
-    delete
   end
 end

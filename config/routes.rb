@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :user_preferred_classes
   resources :user_preferred_days
   resources :preferred_days
-  get 'welcome/index'
+  get '/welcome/index'
   resources :user_profiles
   resources :type_profiles
   resources :schedules

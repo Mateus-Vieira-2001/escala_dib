@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_30_130941) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_02_174830) do
   create_table "friendly_id_slugs", charset: "utf8mb3", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -27,8 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_130941) do
     t.string "handout"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "title_id", null: false
-    t.index ["title_id"], name: "index_lessons_on_title_id"
   end
 
   create_table "preferred_classes", charset: "utf8mb3", force: :cascade do |t|
