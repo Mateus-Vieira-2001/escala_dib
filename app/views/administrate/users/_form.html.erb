@@ -30,28 +30,22 @@
     <%= form.text_field :telefone %>
   </div>
 
-  <%
-=begin%>
- <div>
-    <%= form.label :profile, "Professor" %>
-    <%= form.check_box :profile, {multiple: true}, 'teacher', nil %>
-  </div>
-
-  <div>
-    <%= form.label :profile, "Assistente" %>
-    <%= form.check_box :profile, {multiple: true}, 'assistent', nil %>
-  </div>
-
-  <div>
-    <%= form.label :profile, "Líder" %>
-    <%= form.check_box :profile, {multiple: true}, 'leader', nil %>
-  </div>
-<%
-=end%>
    <div>
-     <%= form.label :'Tipo de usuário', style: "display: block" %>
-    <%= form.text_field :profile %>
+    <%= form.label :profile, "Tipo de usuário" %>
+    <%= form.check_box :profile,{id:'teacher_check_box'},'Professor',nil%> %>
   </div>
+
+<div>
+  <%= form.label :preferred_class, "Pre1"%>
+  <%= form.check_box :preferred_class,{id:'pre1_check_box'},'pre1',nil%>
+
+</div>
+
+<div>
+  <%= form.label :preferred_day, "Domingo"%>
+  <%= form.check_box :preferred_day,{id:'domingo_checkbox'},'Domingo',nil%>
+
+</div>
 
 
   <div>

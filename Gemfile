@@ -88,3 +88,9 @@ gem 'yard', '~> 0.9.36'
 gem 'friendly_id', '~> 5.5.0'
 gem 'mysql2', '~> 0.5.6'
 gem 'tty-spinner'
+
+gem 'whenever', '~> 1.0', require: false
+
+gem 'sidekiq-cron', '~> 1.12'
+
+gem "solargraph", "~> 0.50.0"
